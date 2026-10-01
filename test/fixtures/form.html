@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Donnie Test Form</title>
+<style>
+  body { font-family: sans-serif; margin: 0; padding: 24px; }
+  .tall { height: 3000px; background: linear-gradient(#fff, #eee); }
+  .hidden-link { position: absolute; top: 2500px; left: 100px; }
+</style>
+<script>/* decoy text: the find keyword "zebra" appears here but must NOT match */ const decoy = "zebra";</script>
+</head>
+<body>
+<h1>Form Test</h1>
+<input id="name" type="text" placeholder="Your name">
+<textarea id="bio" rows="3"></textarea>
+<label><input id="agree" type="checkbox"> I agree</label>
+<label><input id="opt1" type="radio" name="choice" value="a"> Option A</label>
+<select id="color">
+  <option value="r">Red</option>
+  <option value="g">Green</option>
+  <option value="b">Blue</option>
+</select>
+<div id="editor" contenteditable="true" style="border:1px solid #ccc; min-height:40px;"></div>
+<button id="submit">Submit</button>
+<a id="deep" class="hidden-link" href="#deep">Deep link zebra</a>
+<p>The visible zebra lives in this paragraph.</p>
+<div class="tall"></div>
+</body>
+</html>

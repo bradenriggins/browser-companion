@@ -1,0 +1,20 @@
+[Unit]
+Description=Browser Companion relay (localhost only; your browser machine reaches it over your private channel)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/browser-companion/relay
+Environment=DBC_PORT=18791
+Environment=DBC_HOST=127.0.0.1
+Environment=DBC_DATA=/opt/browser-companion/relay/data
+ExecStart=/usr/bin/node /opt/browser-companion/relay/server.js
+Restart=always
+RestartSec=10
+# If this service is ever stopped on purpose, don't take anything else down.
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

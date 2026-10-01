@@ -1,0 +1,51 @@
+{
+  "action": {
+    "default_icon": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "src/popup.html",
+    "default_title": "Browser Companion"
+  },
+  "background": {
+    "service_worker": "src/sw.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "all_frames": false,
+      "js": [
+        "src/content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "description": "Connect your browser to your AI agent. Pair once, then it can drive a dedicated tab on your standing approval; the tab banner with Take over / Stop is always visible while it works.",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "128": "icons/icon128.png",
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png"
+  },
+  "manifest_version": 3,
+  "name": "Browser Companion",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage",
+    "debugger",
+    "scripting",
+    "alarms",
+    "notifications",
+    "downloads"
+  ],
+  "version": "0.1.15"
+}

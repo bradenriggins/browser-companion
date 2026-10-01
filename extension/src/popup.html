@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Companion</title>
+<style>
+  body { width: 320px; margin: 0; padding: 16px; font: 13px/1.5 -apple-system, "Segoe UI", sans-serif; color: #111827; }
+  h1 { font-size: 15px; margin: 0 0 4px; display: flex; align-items: center; gap: 8px; }
+  .sub { color: #6b7280; font-size: 12px; margin-bottom: 12px; }
+  .status { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #f3f4f6; margin-bottom: 12px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #9ca3af; }
+  .dot.on { background: #10b981; } .dot.off { background: #ef4444; }
+  .row { margin-bottom: 10px; }
+  label { display: block; font-size: 12px; color: #374151; margin-bottom: 4px; }
+  input[type=text] { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 13px; }
+  button { width: 100%; padding: 9px; border: 0; border-radius: 8px; background: #111827; color: #fff; font-size: 13px; cursor: pointer; margin-top: 6px; }
+  button.secondary { background: #e5e7eb; color: #111827; }
+  button.danger { background: #fee2e2; color: #b91c1c; }
+  button:disabled { opacity: .5; cursor: default; }
+  .session { border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px; margin-bottom: 8px; }
+  .session .reason { font-weight: 600; margin-bottom: 2px; }
+  .session .meta { font-size: 11px; color: #6b7280; margin-bottom: 6px; }
+  .btnrow { display: flex; gap: 6px; } .btnrow button { margin-top: 0; }
+  .note { font-size: 11px; color: #6b7280; margin-top: 10px; }
+  .err { color: #b91c1c; font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<h1>⚡ Browser Companion</h1>
+<div class="sub">Let your agent see and drive a tab when you ask it to.</div>
+
+<div class="status"><span class="dot" id="dot"></span><span id="statusText">Checking…</span></div>
+
+<div id="pairView" style="display:none">
+  <div class="row">
+    <label>Relay server</label>
+    <input type="text" id="relayUrl" value="ws://127.0.0.1:18791">
+  </div>
+  <div class="row">
+    <label>Pairing code (from your agent)</label>
+    <input type="text" id="pairCode" placeholder="DB-…" autocomplete="off">
+  </div>
+  <button id="pairBtn">Pair with your agent</button>
+  <div class="err" id="pairErr"></div>
+</div>
+
+<div id="mainView" style="display:none">
+  <div class="row">
+    <label>Relay server</label>
+    <input type="text" id="relayUrl2">
+  </div>
+  <div class="row">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:#111827">
+      <input type="checkbox" id="askEach" style="width:auto"> Ask me to allow each session
+    </label>
+    <div class="note">When off, your agent can start driving a tab any time after pairing. The tab banner with Take over / Stop always shows.</div>
+  </div>
+  <div id="sessions"></div>
+  <button class="secondary" id="saveBtn">Save settings</button>
+  <button class="danger" id="unpairBtn">Unpair</button>
+</div>
+
+<div class="note">Every session shows a ⚡ banner in the tab with Take over / Stop. Closing the tab ends the session instantly. Nothing is recorded except the action log on your relay.</div>
+
+<script type="module" src="popup.js"></script>
+</body>
+</html>

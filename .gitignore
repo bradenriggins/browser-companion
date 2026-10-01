@@ -1,0 +1,17 @@
+# Runtime data: pairing codes, device tokens, audit logs. NEVER commit.
+relay/data/
+# Dependencies
+relay/node_modules/
+test/node_modules/
+test/scratch-relay/
+test/probe-profile/
+test/server.log
+# Python
+agent/__pycache__/
+*.pyc
+# OS
+.DS_Store
+# Local bundles
+*.tgz
+test/battery-page.html
+test/session-page.html

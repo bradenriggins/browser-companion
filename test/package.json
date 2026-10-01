@@ -1,0 +1,1 @@
+{"description":"Test batteries for Browser Companion","devDependencies":{"playwright-core":"^1.49.0","ws":"^8.18.0"},"name":"browser-companion-tests","private":true,"scripts":{"test":"node sw-battery.js && node content-battery.js && node session-battery.js && node relay-battery.js"},"version":"0.1.0"}
